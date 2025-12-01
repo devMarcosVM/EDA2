@@ -9,7 +9,6 @@ Conceito:
 4- Se um nó é vermelho
     -> é filho esquerdo de um nó preto
     -> seus filhos são pretos
-    
 5- Todo caminho de um nó às suas folhas descedentes possui a mesma quantidade de nós pretos - altura negra do nó
 
 Condições de Correção:
@@ -63,6 +62,7 @@ celula *rotacao_direita(celula *a){
     b->dir = a;
     b->cor = a->cor;
     a->cor = VERM;
+    printf("\n rotação direita\n");
     return b;
 }
 
@@ -80,6 +80,7 @@ celula *rotacao_esquerda(celula *a){
     a->dir = beta;
     b->cor = a->cor;
     a->cor = VERM;
+    printf("\nrotação esquerda \n");
     return b;
 }
 
@@ -93,6 +94,7 @@ celula *rotacao_esquerda(celula *a){
 void subida_cor(celula *a){
     a->cor = VERM;
     a->esq->cor = a->dir->cor = PRETO;
+    printf("\nsubida de cor \n");
 }
 
 /*
@@ -175,10 +177,25 @@ int main(){
     
     printf("=== Demonstração da Árvore Red-Black ===\n\n");
     
-    // Inserindo valores na árvore
-    int valores[] = {10, 5, 15, 3, 7, 12, 18, 1, 4, 6, 8};
+    // Inserondições de Correção:
+1- Se o filho esquerdo e o filho direito de X forem vermelhos, subida de cor
+2- Se o filho esquerdo for preto e o direito, vermelho, ROTAÇÃO À ESQUERDA
+3- Se o filho esquerdo for vermelho e o filho esquerdo do filho esquerdo também, ROTAÇÃO A DIREITA.
+*/indo valores na árvore
+    int valores[10];
+    srand(time(NULL)); // Inicializa o gerador de números aleatórios
+    for (int i = 0; i < 10; i++) {
+        valores[i] = rand() % 100; // Gera valores aleatórios entre 0 e 99
+    }
     int n = sizeof(valores) / sizeof(valores[0]);
     
+    printf("valores: ");
+    for(int i = 0; i < n; i++){
+
+        printf("%d ", valores[i]);
+    }
+    printf("\n\n");
+
     printf("Inserindo valores: ");
     int teste = 3;
     for(int i = 0; i < n; i++){
