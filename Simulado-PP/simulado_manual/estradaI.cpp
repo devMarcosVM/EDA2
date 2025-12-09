@@ -22,7 +22,8 @@ int main(){
     cout << solucao << "\n";
 
     // Grafo completo tem N*(N-1)/2 arestas
-    // Estradas faltantes = total possível - estradas existentes
+    // Estradas faltantes = total possível 
+    // - estradas existentes
 
     return 0;
 }
